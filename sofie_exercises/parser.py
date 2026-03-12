@@ -2,14 +2,18 @@ import torch.nn as nn
 
 def parse_layer(layer):
 
-    # detect ELU layer
     if isinstance(layer, nn.ELU):
-
         return {
             "type": "ELU",
             "alpha": layer.alpha
         }
+    if isinstance(layer, nn.MaxPool2d):
 
+        return {
+        "type": "MaxPool2D",
+        "kernel_size": layer.kernel_size,
+        "stride": layer.stride
+    }
     return None
 
 
@@ -25,5 +29,3 @@ def parse_model(model):
             parsed_layers.append(info)
 
     return parsed_layers
-
-
