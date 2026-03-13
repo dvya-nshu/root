@@ -14,6 +14,7 @@ class TestModel(nn.Module):
         self.bn = nn.BatchNorm2d(1)
         self.rnn = nn.RNN(input_size=5, hidden_size=10, num_layers=1)
         self.lstm = nn.LSTM(input_size=5, hidden_size=10, num_layers=1)
+        self.gru = nn.GRU(input_size=5, hidden_size=8, num_layers=1)
     def forward(self,x):
         x = self.bn(x)
         x = self.conv(x)
@@ -21,6 +22,7 @@ class TestModel(nn.Module):
         x = self.elu(x)
         x = self.rnn(x)
         x = self.lstm(x)
+        x = self.gru(x)
 
         return x
 
