@@ -22,6 +22,16 @@ def parse_layer(layer):
         "eps": layer.eps,
         "momentum": layer.momentum
     }
+    if isinstance(layer, nn.RNN):
+
+        return {
+        "type": "RNN",
+        "input_size": layer.input_size,
+        "hidden_size": layer.hidden_size,
+        "num_layers": layer.num_layers,
+        "bias": layer.bias,
+        "batch_first": layer.batch_first
+    }
     return None
 
 
