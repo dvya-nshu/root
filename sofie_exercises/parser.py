@@ -14,6 +14,14 @@ def parse_layer(layer):
         "kernel_size": layer.kernel_size,
         "stride": layer.stride
     }
+    if isinstance(layer, nn.BatchNorm2d):
+
+        return {
+        "type": "BatchNorm2D",
+        "num_features": layer.num_features,
+        "eps": layer.eps,
+        "momentum": layer.momentum
+    }
     return None
 
 
