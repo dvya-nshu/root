@@ -13,12 +13,14 @@ class TestModel(nn.Module):
         self.elu = nn.ELU(alpha=1.0)
         self.bn = nn.BatchNorm2d(1)
         self.rnn = nn.RNN(input_size=5, hidden_size=10, num_layers=1)
+        self.lstm = nn.LSTM(input_size=5, hidden_size=10, num_layers=1)
     def forward(self,x):
         x = self.bn(x)
         x = self.conv(x)
         x = self.pool(x)
         x = self.elu(x)
         x = self.rnn(x)
+        x = self.lstm(x)
 
         return x
 
